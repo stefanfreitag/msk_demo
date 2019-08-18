@@ -1,40 +1,24 @@
 import cdk = require("@aws-cdk/core");
 
-import { Vpc, SubnetType, Subnet } from "@aws-cdk/aws-ec2";
+import { Vpc, SubnetType, Subnet, CfnInstance } from "@aws-cdk/aws-ec2";
 import { CfnCluster } from "@aws-cdk/aws-msk";
 
 export class MskDemoStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
+    //Create a separate VPC for the Kafka cluster
     const vpc = new Vpc(this, "AWSKafkaTutorialVPC", {
       cidr: "10.0.0.0/16",
       maxAzs: 3,
-      subnetConfiguration: []
+      subnetConfiguration: [
+        { cidrMask: 24, name: "kafka", subnetType: SubnetType.PUBLIC }
+      ]
     });
 
-    const s1 = new Subnet(this, "Subnet-1", {
-      vpcId: vpc.vpcId,
-      availabilityZone: "eu-west-1a",
-      cidrBlock: "10.0.4.0/24"
-    });
-
-    const s2 = new Subnet(this, "Subnet-2", {
-      vpcId: vpc.vpcId,
-      availabilityZone: "eu-west-1b",
-      cidrBlock: "10.0.2.0/24"
-    });
-    const s3 = new Subnet(this, "Subnet-3", {
-      vpcId: vpc.vpcId,
-      availabilityZone: "eu-west-1c",
-      cidrBlock: "10.0.3.0/24"
-    });
-    vpc.publicSubnets.push(s1);
-    vpc.publicSubnets.push(s2);
-    vpc.publicSubnets.push(s3);
-    /** 
-    new CfnCluster(this, "mskCluster", {
-      clusterName: "DemoCluster",
+    // Create the Kafka cluster with one broker per availability zone
+    const cluster = new CfnCluster(this, "mskCluster", {
+      clusterName: "AWSKafkaTutorialCluster",
       kafkaVersion: "1.1.1",
 
       numberOfBrokerNodes: 3,
@@ -42,19 +26,35 @@ export class MskDemoStack extends cdk.Stack {
         clientSubnets: [
           vpc.publicSubnets[0].subnetId,
           vpc.publicSubnets[1].subnetId,
-          vpc.publicSubnets[2].subnetId,
-          
+          vpc.publicSubnets[2].subnetId
         ],
 
         brokerAzDistribution: "DEFAULT",
         instanceType: "kafka.m5.large",
         storageInfo: {
           ebsStorageInfo: {
-            volumeSize: 100
+            volumeSize: 200
           }
         }
       }
     });
-   */
+    // Create an EC2 instance used to access the Kafka cluster
+    /**
+    const ec2Instance = new CfnInstance(this, "demo-instance", {
+      instanceType: "t3.micro",
+      tags: [{ key: "Key", value: "AWSKafkaTutorialClient" }],
+      imageId: "ami-0bbc25e23a7640b9b",
+      monitoring: false,
+      keyName: "sfreitag_key",
+      networkInterfaces: [
+        {
+          deviceIndex: "0",
+          associatePublicIpAddress: true,
+     //     subnetId: vpc.publicSubnets[0].subnetId
+        }
+      ]
+    });
+    //const secGroupId = ec2Instance.securityGroupIds[0];
+  */
   }
 }
