@@ -20,7 +20,11 @@ export class MskDemoStack extends cdk.Stack {
     const cluster = new CfnCluster(this, "mskCluster", {
       clusterName: "AWSKafkaTutorialCluster",
       kafkaVersion: "1.1.1",
-
+      encryptionInfo: {
+        encryptionInTransit: {
+          clientBroker: "PLAINTEXT"
+        }
+      },
       numberOfBrokerNodes: 3,
       brokerNodeGroupInfo: {
         clientSubnets: [
