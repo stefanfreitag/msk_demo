@@ -5,8 +5,8 @@ import { MskDemoStack } from '../lib/msk_demo-stack';
 
 const app = new cdk.App();
 new MskDemoStack(app, 'MskDemoStack', {
-    env: {
-        region: 'eu-west-1',
-        account: 'ACCOUNTID'
+    env: {        
+        region: process.env.CDK_DEFAULT_REGION,
+        account: process.env.CDK_DEFAULT_ACCOUNT,
     }
 });
