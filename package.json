@@ -18,7 +18,7 @@
   "dependencies": {
     "@aws-cdk/aws-ec2": "^1.4.0",
     "@aws-cdk/aws-msk": "^1.4.0",
-    "@aws-cdk/core": "^1.4.0",
+    "@aws-cdk/core": "^1.5.0",
     "source-map-support": "^0.5.13"
   }
 }
