@@ -16,9 +16,9 @@
     "typescript": "^3.6.2"
   },
   "dependencies": {
-    "@aws-cdk/aws-ec2": "^1.5.0",
+    "@aws-cdk/aws-ec2": "^1.6.1",
     "@aws-cdk/core": "^1.6.1",
-    "@aws-cdk/aws-msk": "^1.6.0",
+    "@aws-cdk/aws-msk": "^1.6.1",
     "source-map-support": "^0.5.13"
   }
 }
