@@ -19,6 +19,7 @@ export class MskDemoStack extends cdk.Stack {
     // Create the Kafka cluster with one broker per availability zone
     const cluster = new CfnCluster(this, "mskCluster", {
       clusterName: "AWSKafkaTutorialCluster",
+
       kafkaVersion: "1.1.1",
       encryptionInfo: {
         encryptionInTransit: {
@@ -42,23 +43,5 @@ export class MskDemoStack extends cdk.Stack {
         }
       }
     });
-    // Create an EC2 instance used to access the Kafka cluster
-    /**
-    const ec2Instance = new CfnInstance(this, "demo-instance", {
-      instanceType: "t3.micro",
-      tags: [{ key: "Key", value: "AWSKafkaTutorialClient" }],
-      imageId: "ami-0bbc25e23a7640b9b",
-      monitoring: false,
-      keyName: "sfreitag_key",
-      networkInterfaces: [
-        {
-          deviceIndex: "0",
-          associatePublicIpAddress: true,
-     //     subnetId: vpc.publicSubnets[0].subnetId
-        }
-      ]
-    });
-    //const secGroupId = ec2Instance.securityGroupIds[0];
-  */
   }
 }
