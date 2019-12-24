@@ -2,6 +2,7 @@ import cdk = require("@aws-cdk/core");
 
 import { Vpc, SubnetType, Subnet, CfnInstance } from "@aws-cdk/aws-ec2";
 import { CfnCluster } from "@aws-cdk/aws-msk";
+import { KafkaVersion } from "./kafka_version";
 
 export class MskDemoStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
@@ -20,7 +21,7 @@ export class MskDemoStack extends cdk.Stack {
     const cluster = new CfnCluster(this, "mskCluster", {
       clusterName: "AWSKafkaTutorialCluster",
 
-      kafkaVersion: "1.1.1",
+      kafkaVersion: KafkaVersion.VERSION_2_3_1,
       encryptionInfo: {
         encryptionInTransit: {
           clientBroker: "PLAINTEXT"
