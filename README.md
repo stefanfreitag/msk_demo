@@ -1,13 +1,13 @@
 # AWS MSK Demo
 
-* Create a VPC with subnets
-* Creates a Kafka cluster with one broker in each subnet
-* Creates an EC2 instance that can connect to the Kafka cluster
+*   Create a VPC with subnets
+*   Creates a Kafka cluster with one broker in each subnet
+*   Creates an EC2 instance that can connect to the Kafka cluster
 
 The CDK stack itself makes uses of two environment variables
 
-* CDK_DEFAULT_REGION
-* CDK_DEFAULT_ACCOUNT
+*   CDK_DEFAULT_REGION
+*   CDK_DEFAULT_ACCOUNT
 
 Those should be set on the command line before executing `cdk deploy`.
 
