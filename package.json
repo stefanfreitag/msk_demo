@@ -12,17 +12,17 @@
     "lint-md": "remark ."
   },
   "devDependencies": {
-    "@types/node": "13.7.1",
-    "aws-cdk": "^1.24.0",
+    "@types/node": "13.7.6",
+    "aws-cdk": "^1.26.0",
     "prettier": "^1.19.1",
     "remark-lint": "^6.0.5",
     "ts-node": "^8.6.2",
-    "typescript": "^3.7.5"
+    "typescript": "^3.8.2"
   },
   "dependencies": {
-    "@aws-cdk/aws-ec2": "^1.24.0",
-    "@aws-cdk/aws-msk": "^1.24.0",
-    "@aws-cdk/core": "^1.24.0",
+    "@aws-cdk/aws-ec2": "^1.26.0",
+    "@aws-cdk/aws-msk": "^1.26.0",
+    "@aws-cdk/core": "^1.26.0",
     "remark-cli": "^7.0.1",
     "remark-preset-lint-recommended": "^3.0.3",
     "source-map-support": "^0.5.16"
