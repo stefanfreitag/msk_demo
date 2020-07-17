@@ -23,7 +23,7 @@
     "@aws-cdk/aws-ec2": "1.51.0",
     "@aws-cdk/aws-msk": "1.51.0",
     "@aws-cdk/core": "1.51.0",
-    "remark-cli": "8.0.0",
+    "remark-cli": "8.0.1",
     "remark-preset-lint-recommended": "4.0.1",
     "source-map-support": "0.5.19"
   },
