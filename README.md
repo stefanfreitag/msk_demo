@@ -61,3 +61,4 @@ Hello Kafka
 cd kafka_2.12-1.1.1/bin/
 ./kafka-producer-perf-test.sh --topic test --throughput 100000 --num-records 10000000000 --producer-props acks=all linger.ms=10 batch.size=65536  bootstrap.servers=b-1.democluster.dwg2b7.c3.kafka.eu-central-1.amazonaws.com:9092,b-2.democluster.dwg2b7.c3.kafka.eu-central-1.amazonaws.com:9092,b-3.democluster.dwg2b7.c3.kafka.eu-central-1.amazonaws.com:9092 --record-size 1000
 ```
+ 
