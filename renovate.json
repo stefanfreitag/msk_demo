@@ -11,6 +11,10 @@
     {
       "packageNames": ["@types/node", "@types/jest","ts-jest"],
       "enabled": false
+    },
+    {
+      "packageNames": ["prettier"],
+      "extends": ["schedule:monthly"]
     }
   ]
 }
