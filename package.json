@@ -13,16 +13,16 @@
   },
   "devDependencies": {
     "@types/node": "14.0.14",
-    "aws-cdk": "1.64.0",
+    "aws-cdk": "1.64.1",
     "prettier": "2.1.1",
     "remark-lint": "7.0.1",
     "ts-node": "9.0.0",
     "typescript": "4.0.3"
   },
   "dependencies": {
-    "@aws-cdk/aws-ec2": "1.64.0",
-    "@aws-cdk/aws-msk": "1.64.0",
-    "@aws-cdk/core": "1.64.0",
+    "@aws-cdk/aws-ec2": "1.64.1",
+    "@aws-cdk/aws-msk": "1.64.1",
+    "@aws-cdk/core": "1.64.1",
     "remark-cli": "8.0.0",
     "remark-preset-lint-recommended": "4.0.1",
     "source-map-support": "0.5.19"
